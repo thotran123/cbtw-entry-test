@@ -20,33 +20,33 @@ Registration credentials (valid and invalid)
 ### 6. Test Scenarios 
 a. Register a new user — POST /api/register 
 - Positive cases 
-Can register successfully with valid details 
+    - Can register successfully with valid details 
 - Negative cases 
-Missing password 
-Missing email 
-Unrecognized email (not a defined demo user) 
+    - Missing password 
+    - Missing email 
+    - Unrecognized email (not a defined demo user) 
 
 b. Get user list by ID — GET /users 
 - Positive cases 
-Successfully get the information of user list
+    - Successfully get the information of user list
 - Negative cases 
-Non-existent page number 
-Invalid page number format (String, Boolean) 
+    - Non-existent page number 
+ - Invalid page number format (String, Boolean) 
 
 c. Update a user — PUT /users/{id} 
 - Positive cases 
-Can update a user information 
+    - Can update a user information 
 - Negative cases 
-Empty or incomplete update 
-Update non-existent ID 
+    - Empty or incomplete update 
+    - Update non-existent ID 
 
 d. Delete a user — DELETE /users/{id} 
 - Positive cases 
-Delete existing user (e.g., id=2) 
-Expect: 204 No Content; nothing in the body. 
+    - Delete existing user (e.g., id=2) 
+    - Expect: 204 No Content; nothing in the body. 
 - Negative cases 
-Delete same user twice 
-Delete non-existent ID 
+    - Delete same user twice 
+    - Delete non-existent ID 
 
 ### 7. End-to-End / Workflow Tests 
 #### Register → Update → Delete 
@@ -71,15 +71,15 @@ npm init
 npn install cypress --save-dev
 npx cypress open
 ```
-# Run Test on Test env (default)
+#### Run Test on Test env (default)
 ```
 npx cypress run
 ```
-# Run Test on Stage env
+#### Run Test on Stage env
 ```
 TEST_ENV=stage npx cypress run
 ```
-### Report
+#### Report
 ```
 open reports/mocha/index.html
 ```
