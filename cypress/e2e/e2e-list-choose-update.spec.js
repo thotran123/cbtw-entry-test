@@ -1,4 +1,4 @@
-describe('E2E — List → Choose → Update', () => {
+describe('First E2E: List → Choose → Update', () => {
   before(() => {
     cy.loginAndSetBearer(); // sets BEARER_TOKEN via POST /api/login
   });
@@ -7,7 +7,7 @@ describe('E2E — List → Choose → Update', () => {
     // 1) Unrealistic page — expect empty list but safe 200
     cy.apiRequest({
       method: 'GET',
-      url: '/api/users',
+      url: '/api/users/',
       qs: { page: 9999 },
     }).then(({ status, body }) => {
       expect(status).to.eq(200);
@@ -19,7 +19,7 @@ describe('E2E — List → Choose → Update', () => {
     // 2) Real page — expect non-empty list
     cy.apiRequest({
       method: 'GET',
-      url: '/api/users',
+      url: '/api/users/',
       qs: { page: 2 },
     }).then(({ status, body }) => {
       expect(status).to.eq(200);

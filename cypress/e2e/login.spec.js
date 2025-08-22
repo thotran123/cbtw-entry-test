@@ -10,7 +10,7 @@ describe('Verify ReqRes Login API', () => {
     'x-api-key': Cypress.env('REQRES_API_KEY'),
   };
 
-  it('login successfully with valid email & password', () => {
+  it('Login successfully with valid email & password', () => {
     cy.request({
       method: 'POST',
       url,
@@ -22,7 +22,7 @@ describe('Verify ReqRes Login API', () => {
     });
   });
 
-  it('login unsuccessfully (expected to FAIL)', () => {
+  it('Login unsuccessfully (expected to FAIL)', () => {
     // NOT using failOnStatusCode:false
     cy.request({
       method: 'POST',

@@ -1,6 +1,6 @@
 // E2E: Register → Update → Delete → Delete again
 
-describe('E2E — Register → Update → Delete', () => {
+describe('Second E2E: Register → Update → Delete', () => {
   // Build headers at CALL TIME so the Bearer (set in before) is present
   const authHeaders = () => ({
     'Content-Type': 'application/json',
