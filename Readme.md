@@ -31,7 +31,7 @@ b. Get user list by ID — GET /users
     - Successfully get the information of user list
 - Negative cases 
     - Non-existent page number 
- - Invalid page number format (String, Boolean) 
+    - Invalid page number format (String, Boolean) 
 
 c. Update a user — PUT /users/{id} 
 - Positive cases 
