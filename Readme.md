@@ -63,7 +63,7 @@ Description:
 - Pick a known user 
 - Update that user 
 
-### Run
+### 8. Run
 #### Cypress Set up
 Open terminal and run below command
 ```
