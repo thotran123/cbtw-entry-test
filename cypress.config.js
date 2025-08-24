@@ -21,6 +21,7 @@ export default defineConfig({
     saveAllAttempts: false,
   },
   e2e: {
+    screenshotOnRunFailure: false,
     baseUrl: baseUrlByEnv[PROFILE],
     specPattern: 'cypress/e2e/**/*.spec.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {

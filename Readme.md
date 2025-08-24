@@ -10,43 +10,47 @@ Purpose: To verify that core user operations—create, read, update, delete—wo
 - Delete a user — DELETE /users 
 
 ### 3. Test Objectives 
+- Validate success paths return the expected status codes and fields.
+- Validate error/edge cases return safe, predictable responses.
+- Prove flows work end-to-end across environments (TEST/STAGE).
 
 ### 4. Test Environment 
-TEST and STAGE (the same test pack runs on both). 
+TEST and STAGE (same test pack; environment chosen via TEST_ENV).
 
 ### 5. Test Data 
-Registration credentials (valid and invalid) 
+Registration/login credentials (valid & invalid).
+- Example valid register: { email: 'eve.holt@reqres.in', password: 'pistol' }
+- Invalids: missing password, missing email, unrecognized email.
 
 ### 6. Test Scenarios 
 a. Register a new user — POST /api/register 
 - Positive cases 
-    - Can register successfully with valid details 
+    - Can register successfully with valid details (expect 200, id, token).
 - Negative cases 
-    - Missing password 
-    - Missing email 
-    - Unrecognized email (not a defined demo user) 
+    - Missing password → 400 with erro message.
+    - Missing email → 400 with error message.
+    - Unrecognized email → 400.
 
 b. Get user list by ID — GET /users 
 - Positive cases 
-    - Successfully get the information of user list
+    - Successfully get a page of users (expect 200, data is a non-empty array for known pages).
 - Negative cases 
-    - Non-existent page number 
-    - Invalid page number format (String, Boolean) 
+    - Non-existent page number (e.g., page=9999) → 200 with empty data.
+    - Invalid page format (string/boolean) → safe 200
 
 c. Update a user — PUT /users/{id} 
 - Positive cases 
-    - Can update a user information 
+    - Can update a user’s information (e.g., { name, job }) → 200 with updatedAt.
 - Negative cases 
-    - Empty or incomplete update 
-    - Update non-existent ID 
+    - Update a user’s information with empty bodies → safe response (no server error).
+    - Update non-existent ID → safe response (no server error).
 
 d. Delete a user — DELETE /users/{id} 
 - Positive cases 
-    - Delete existing user (e.g., id=2) 
-    - Expect: 204 No Content; nothing in the body. 
+    - Delete existing user (e.g., id=2) → 204 No Content, empty body.
 - Negative cases 
-    - Delete same user twice 
-    - Delete non-existent ID 
+    - Delete same user twice → still safe.
+    - Delete non-existent ID → safe response (no server error).
 
 ### 7. End-to-End / Workflow Tests 
 #### Register → Update → Delete 
@@ -68,8 +72,13 @@ Description:
 Open terminal and run below command
 ```
 npm init
-npn install cypress --save-dev
+npm install cypress --save-dev
 npx cypress open
+```
+#### Install reporter
+Open terminal and run below command
+```
+npm i -D cypress-mochawesome-reporter 
 ```
 #### Run Test on Test env (default)
 ```

@@ -1,6 +1,6 @@
 import { reqres } from '../support/api/reqres';
 
-describe('get the list of users', () => {
+describe('Get the list of users', () => {
   before(() => {
     cy.loginAndSetBearer(); // sets BEARER_TOKEN via POST /api/login
   });

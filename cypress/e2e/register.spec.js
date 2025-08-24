@@ -5,7 +5,7 @@ const ENV = Cypress.env('ENV_NAME') || 'test';
 const creds = credsByEnv[ENV];   // { register, missingPassword, ... }
 
 describe('Verify ReqRes Register API', () => {
-  it('registers successfully with valid email & password', () => {
+  it('Registers successfully with valid email & password', () => {
     reqres.register(creds.register).then((resp) => {
       expect(resp.status).to.eq(200);
       expect(resp.body).to.have.property('id');     // e.g. 4
@@ -14,7 +14,7 @@ describe('Verify ReqRes Register API', () => {
     });
   });
 
-  it('fails with 400 when password is missing', () => {
+  it('Fails with 400 when password is missing', () => {
     reqres.register(creds.missingPassword, { allowFail: true }).then((resp) => {
       expect(resp.status).to.eq(400);
       expect(resp.body).to.have.property('error', 'Missing password');

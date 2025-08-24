@@ -1,3 +1,10 @@
 # Node
 node_modules/
+
+# --- OS / Editor ---
 .vscode/
+
+# --- Reports 
+reports/
+cypress/results/
+cypress/screenshots/
